@@ -9,8 +9,10 @@ __pycache__/
 *.zip
 
 # Folder
+chromedriver-win64/
 
 # special files
+registre-traitement-simplifie.ods
 
 # C extensions
 *.so
