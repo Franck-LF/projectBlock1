@@ -1,0 +1,868 @@
+{
+  "author": "Unnamed",
+  "title": "Untitled Diagram",
+  "date": "2025-02-02T15:17:13.148Z",
+  "tables": [
+    {
+      "id": 0,
+      "name": "movies",
+      "x": -173.37635946054468,
+      "y": -90.08198865839964,
+      "fields": [
+        {
+          "name": "movie_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "release_date",
+          "type": "DATE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "duration",
+          "type": "INTEGER",
+          "default": "0",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "expressed in minutes",
+          "id": 2,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "star_rating",
+          "type": "INTEGER",
+          "default": "0",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 3,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "notes",
+          "type": "INTEGER",
+          "default": "0",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 4,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "critics",
+          "type": "INTEGER",
+          "default": "0",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 5,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "info_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 6,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#ffe159",
+      "key": 1738493787485
+    },
+    {
+      "id": 1,
+      "name": "categories",
+      "x": 397.69231062500023,
+      "y": -141.90957014404296,
+      "fields": [
+        {
+          "name": "category_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": 255
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#32c9b0",
+      "key": 1738494421152
+    },
+    {
+      "id": 2,
+      "name": "category_movie",
+      "x": 125.89743687500032,
+      "y": -74.579179375,
+      "fields": [
+        {
+          "name": "category_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "movie_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "key": 1738494554668
+    },
+    {
+      "id": 3,
+      "name": "countries",
+      "x": 391.15846786132846,
+      "y": 16.63569933959974,
+      "fields": [
+        {
+          "name": "country_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": 255
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#89e667",
+      "key": 1738494603492
+    },
+    {
+      "id": 4,
+      "name": "country_movie",
+      "x": 93.9903978124999,
+      "y": 81.72591483154318,
+      "fields": [
+        {
+          "name": "country_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "movie_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "key": 1738494646036
+    },
+    {
+      "id": 5,
+      "name": "actors",
+      "x": -175.22628156249988,
+      "y": -425.7042278521968,
+      "fields": [
+        {
+          "name": "actor_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "actor_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": 255
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#bc49c4",
+      "key": 1738494755972
+    },
+    {
+      "id": 6,
+      "name": "actor_movie",
+      "x": -172.90000000000003,
+      "y": -276.83051286747934,
+      "fields": [
+        {
+          "name": "actor_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "movie_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "key": 1738494831395
+    },
+    {
+      "id": 7,
+      "name": "directors",
+      "x": -468.2935869361305,
+      "y": -428.0304029259777,
+      "fields": [
+        {
+          "name": "director_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "director_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": 255
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#7c4af0",
+      "key": 1738494875180
+    },
+    {
+      "id": 8,
+      "name": "director_movie",
+      "x": -465.74100999999996,
+      "y": -270.22279144902234,
+      "fields": [
+        {
+          "name": "director_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "movie_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "key": 1738494941236
+    },
+    {
+      "id": 9,
+      "name": "composers",
+      "x": 102.89678656250017,
+      "y": -424.2016612744141,
+      "fields": [
+        {
+          "name": "composer_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "movie_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#7d9dff",
+      "key": 1738495028732
+    },
+    {
+      "id": 10,
+      "name": "composer_movie",
+      "x": 102.89678656249994,
+      "y": -274.27784670654296,
+      "fields": [
+        {
+          "name": "composer_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "movie_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "key": 1738495084308
+    },
+    {
+      "id": 11,
+      "name": "reviews",
+      "x": -547.8852850855446,
+      "y": -68.08624965214747,
+      "fields": [
+        {
+          "name": "review_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "movie_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "date",
+          "type": "DATE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "star_rating",
+          "type": "ENUM",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 3,
+          "size": "",
+          "values": [
+            "0.5",
+            "1",
+            "1.5",
+            "2",
+            "2.5",
+            "3",
+            "3.5",
+            "4",
+            "4.5",
+            "5"
+          ]
+        },
+        {
+          "name": "review",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 4,
+          "size": 65535
+        },
+        {
+          "name": "user_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 5,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#f03c3c",
+      "key": 1738507078098
+    },
+    {
+      "id": 12,
+      "name": "users",
+      "x": -837.6011218750002,
+      "y": -41.284336839647295,
+      "fields": [
+        {
+          "name": "user_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "user_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": 255
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#ff4f81",
+      "key": 1738507832322
+    },
+    {
+      "id": 13,
+      "name": "similar_movies",
+      "x": 20.060166023044758,
+      "y": 259.9182287574197,
+      "fields": [
+        {
+          "name": "main_movie_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "similar_movie_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#a751e8",
+      "key": 1738507939970
+    },
+    {
+      "id": 14,
+      "name": "infos",
+      "x": -522.3594980394556,
+      "y": 231.8399564843752,
+      "fields": [
+        {
+          "name": "info_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "summary",
+          "type": "LONGTEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": 65535
+        },
+        {
+          "name": "url_thumbnail",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": 255
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#7d9dff",
+      "key": 1738508051202
+    }
+  ],
+  "relationships": [
+    {
+      "startTableId": 11,
+      "startFieldId": 1,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_movies_reviews",
+      "id": 0
+    },
+    {
+      "startTableId": 14,
+      "startFieldId": 0,
+      "endTableId": 0,
+      "endFieldId": 6,
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_movies_infos",
+      "id": 1
+    },
+    {
+      "startTableId": 11,
+      "startFieldId": 5,
+      "endTableId": 12,
+      "endFieldId": 0,
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_reviews_users",
+      "id": 2
+    },
+    {
+      "startTableId": 6,
+      "startFieldId": 1,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_movies_actor_movie",
+      "id": 3
+    },
+    {
+      "startTableId": 8,
+      "startFieldId": 1,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_movies_director_movie",
+      "id": 4
+    },
+    {
+      "startTableId": 10,
+      "startFieldId": 1,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_movies_composer_movie",
+      "id": 5
+    },
+    {
+      "startTableId": 2,
+      "startFieldId": 1,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_movies_category_movie",
+      "id": 6
+    },
+    {
+      "startTableId": 4,
+      "startFieldId": 1,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_movies_country_movie",
+      "id": 7
+    },
+    {
+      "startTableId": 7,
+      "startFieldId": 0,
+      "endTableId": 8,
+      "endFieldId": 0,
+      "cardinality": "one_to_many",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_directors_director_movie",
+      "id": 8
+    },
+    {
+      "startTableId": 5,
+      "startFieldId": 0,
+      "endTableId": 6,
+      "endFieldId": 0,
+      "cardinality": "one_to_many",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_actors_actor_movie",
+      "id": 9
+    },
+    {
+      "startTableId": 9,
+      "startFieldId": 0,
+      "endTableId": 10,
+      "endFieldId": 0,
+      "cardinality": "one_to_many",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_composers_composer_movie",
+      "id": 10
+    },
+    {
+      "startTableId": 1,
+      "startFieldId": 0,
+      "endTableId": 2,
+      "endFieldId": 0,
+      "cardinality": "one_to_many",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_categories_category_movie",
+      "id": 11
+    },
+    {
+      "startTableId": 3,
+      "startFieldId": 0,
+      "endTableId": 4,
+      "endFieldId": 0,
+      "cardinality": "one_to_many",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_countries_country_movie",
+      "id": 12
+    }
+  ],
+  "notes": [],
+  "subjectAreas": [],
+  "database": "mysql"
+}
