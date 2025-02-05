@@ -8,6 +8,7 @@ __pycache__/
 *.html
 *.zip
 *.ods
+*.drawio
 
 # Folder
 chromedriver-win64/
