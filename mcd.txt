@@ -22,7 +22,8 @@ NATIONALITY, 0N MOVIES, 0N COUNTRIES
 REVIEWS: review_id, movie_id, date, star_rating, review, user_id
 HAS REVIEWS, 0N REVIEWS, 0N MOVIES
 MOVIES: movie_id, title, duration, release_date, nb_notes, nb_reviews, info_id, star_rating
-HAS INFOS, 11 MOVIES
+HAS INFOS, 11 MOVIES, 11 INFOS
+INFOS: info_id, summary, url_thumbnail
 
 WRITES REVIEW, 1N USERS, 0N REVIEWS
 USERS: user_id, user_name, nb_reviews
