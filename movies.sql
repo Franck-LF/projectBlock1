@@ -40,7 +40,6 @@ CREATE TABLE actors (
 CREATE TABLE composers (
     composer_id		VARCHAR(255)	NOT NULL,
     composer_name	VARCHAR(255)	NOT NULL,
-    nb_critics		INT,
     PRIMARY KEY (composer_id),
     UNIQUE  KEY (composer_id)
 );

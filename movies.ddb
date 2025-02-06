@@ -1,7 +1,7 @@
 {
   "author": "Unnamed",
   "title": "Untitled Diagram",
-  "date": "2025-02-02T15:17:13.148Z",
+  "date": "2025-02-06T19:08:40.065Z",
   "tables": [
     {
       "id": 0,
@@ -22,17 +22,17 @@
           "id": 0
         },
         {
-          "name": "release_date",
-          "type": "DATE",
+          "name": "movie_name",
+          "type": "VARCHAR",
           "default": "",
           "check": "",
           "primary": false,
           "unique": false,
-          "notNull": false,
+          "notNull": true,
           "increment": false,
           "comment": "",
           "id": 1,
-          "size": "",
+          "size": 255,
           "values": []
         },
         {
@@ -50,13 +50,13 @@
           "values": []
         },
         {
-          "name": "star_rating",
-          "type": "INTEGER",
-          "default": "0",
+          "name": "release_date",
+          "type": "DATE",
+          "default": "",
           "check": "",
           "primary": false,
           "unique": false,
-          "notNull": true,
+          "notNull": false,
           "increment": false,
           "comment": "",
           "id": 3,
@@ -64,7 +64,7 @@
           "values": []
         },
         {
-          "name": "notes",
+          "name": "nb_notes",
           "type": "INTEGER",
           "default": "0",
           "check": "",
@@ -78,7 +78,7 @@
           "values": []
         },
         {
-          "name": "critics",
+          "name": "nb_reviews",
           "type": "INTEGER",
           "default": "0",
           "check": "",
@@ -102,6 +102,20 @@
           "increment": false,
           "comment": "",
           "id": 6,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "star_rating",
+          "type": "FLOAT",
+          "default": "0",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 7,
           "size": "",
           "values": []
         }
@@ -430,8 +444,8 @@
           "id": 0
         },
         {
-          "name": "movie_id",
-          "type": "INTEGER",
+          "name": "composer_name",
+          "type": "VARCHAR",
           "default": "",
           "check": "",
           "primary": false,
@@ -440,7 +454,7 @@
           "increment": false,
           "comment": "",
           "id": 1,
-          "size": "",
+          "size": 255,
           "values": []
         }
       ],
@@ -621,6 +635,20 @@
           "comment": "",
           "id": 1,
           "size": 255
+        },
+        {
+          "name": "nb_reviews",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
         }
       ],
       "comment": "",
