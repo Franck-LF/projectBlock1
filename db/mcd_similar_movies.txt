@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                               %
+%                    ASSOCIATION DE DÉPENDANCE FONCTIONNELLE                    %
+%                                                                               %
+%  Si votre association a une cardinalité 11, mais aucun attribut, vous pouvez  %
+%  la nommer « DF » : Mocodo la représentera par un cercle.                     %
+%                                                                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+DIRECTORS: director_id, director_name
+ACTORS: actor_id, actor_name
+COMPOSERS: composer_id, composer_name
+CATEGORIES: category_id, category
+COUNTRIES: country_id, country
+
+DIRECTS MOVIE, 0N MOVIES, 0N DIRECTORS
+CASTS, 0N MOVIES, 0N ACTORS
+COMPOSES MUSIC, 0N MOVIES, 0N COMPOSERS
+HAS CATEGORY, 0N MOVIES, 0N CATEGORIES
+NATIONALITY, 0N MOVIES, 0N COUNTRIES
+
+REVIEWS: review_id, movie_id, date, star_rating, review, user_id
+HAS REVIEWS, 0N REVIEWS, 0N MOVIES
+MOVIES: movie_id, title, duration, release_date, nb_notes, nb_reviews, info_id, star_rating
+HAS INFOS, 11 MOVIES, 11 INFOS
+INFOS: info_id, summary, url_thumbnail
+
+WRITES REVIEW, 1N USERS, 0N REVIEWS
+USERS: user_id, user_name, nb_reviews
+HAS SIMILAR MOVIES, 0N MOVIES, 0N MOVIES
