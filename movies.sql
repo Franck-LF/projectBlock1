@@ -48,6 +48,7 @@ CREATE TABLE composers (
 CREATE TABLE users (
     user_id		VARCHAR(255)	NOT NULL,
     user_name		VARCHAR(255)	NOT NULL,
+    nb_reviews		VARCHAR(255)    DEFAULT 0,
     PRIMARY KEY (user_id),
     UNIQUE  KEY (user_id)
 );
@@ -80,7 +81,7 @@ CREATE TABLE movies (
     duration		INT     DEFAULT 0,
     release_date	DATE	NOT NULL,
     nb_notes		INT	DEFAULT 0,
-    nb_critics		INT	DEFAULT 0,
+    nb_reviews		INT	DEFAULT 0,
     info_id		VARCHAR(255)	NOT NULL,
     star_rating		FLOAT	NOT NULL,
     PRIMARY KEY (movie_id),
