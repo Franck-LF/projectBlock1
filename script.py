@@ -12,7 +12,7 @@ import re
 import io
 import math
 import copy
-import httpx
+import json
 import requests
 import numpy as np
 import pandas as pd
@@ -44,7 +44,8 @@ def _options():
     options.add_argument('--verbose')
     return options
 
-%config IPCompleter.greedy = True
-
 url_site  = 'https://www.allocine.fr/'
 url_films = 'https://www.allocine.fr/films/'
+
+
+
