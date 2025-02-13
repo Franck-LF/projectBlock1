@@ -77,6 +77,7 @@ CREATE TABLE countries (
 CREATE TABLE movies (
     movie_id		VARCHAR(255)	NOT NULL,
     title		VARCHAR(255)	NOT NULL,
+    original_title	VARCHAR(255)	NOT NULL,
     duration		INT     DEFAULT 0,
     release_date	DATE	NOT NULL,
     nb_notes		INT	DEFAULT 0,
