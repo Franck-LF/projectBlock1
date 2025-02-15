@@ -3,10 +3,12 @@ import os
 import jwt
 import datetime
 from fastapi import FastAPI, Query, Depends, HTTPException, Header
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import mysql.connector
 from typing import Optional
 from pydantic import BaseModel
 from dotenv import load_dotenv
+
 
 
 
