@@ -22,6 +22,8 @@ from scrapping import scrap_new_release, Options_Scrapping
 # Import request API functions
 from requestOMDB import request_plot_and_thumbnail
 
+# Import databases functions
+from database import fill_in_db_from_dataframe
 
 
 if __name__ == '__main__':
@@ -38,25 +40,41 @@ if __name__ == '__main__':
     nb_minimum_critics = 0
     nb_consecutives_unpopular_movies_to_break = 20
     nb_maximum_movies_per_year = 250
-
-    # Scrap new releases of the week
     options_scrapping = Options_Scrapping(
                                     use_Selenium, driver, nb_minimum_critics,
                                     nb_consecutives_unpopular_movies_to_break,
                                     nb_maximum_movies_per_year)
-    
+
+    # -------------- #
+    #   Scrapping    #
+    # -------------- #    
     df_movies = scrap_new_release(options_scrapping)
     assert all(column in df_movies.columns for column in ['title', 'original_title', 'url_thumbnail'])
 
-    # Save the dataframe in csv file
+    # ----------------------------------- #
+    #   Save the dataframe in csv file    #
+    # ----------------------------------- #    
     df_movies.to_csv(f'csv/movies_{year}_{month}_{day}.csv', sep=',', index = False)
 
-    # Request API to get more informations
+    # ---------------------------------------------------- #
+    #   Insert scrapped informations into MySQL Database   #
+    # ---------------------------------------------------- #
+    fill_in_db_from_dataframe(df_movies)
+
+
+    # -------------------- #
+    #   Request API OMDB   #
+    # -------------------- #
     df_movies_wiht_plot_and_thumbnail = request_plot_and_thumbnail(df_movies[['title', 'original_title', 'url_thumbnail']])
 
-    # Insert scrapped informations into MySQL Database
 
-    # Insert Requested infos from OMDB into MongoDB Database
+
+    # ---------------------------------------------------------- #
+    #   Insert Requested infos from OMDB into MongoDB Database   #
+    # ---------------------------------------------------------- #
+
+
+
 
     now = datetime.now()
     print(f"Finished at: {now.strftime("%H:%M:%S")}")
