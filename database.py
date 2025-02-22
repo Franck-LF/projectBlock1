@@ -367,6 +367,7 @@ def fill_in_movie_table(df_movies_formatted, connector, cursor):
         fill_in_pivot_table('composer_movie', 'composer_id', lst_composers, movie_id, cursor)
         
         connector.commit()
+    print(f"\nAdded {df_movies_formatted.shape[0]} movies into MySQL")
 
 def fill_in_db_from_csv(csv_files, connector, cursor):
     ''' Fill in the database from csv files
@@ -391,6 +392,10 @@ def fill_in_mysql_db_from_dataframe(df_movies):
         Args: df_movies Pandas Dataframe containing all movie informations
     '''
     
+    if df_movies.empty:
+        print('Dataframe is empty, nothing to insert into MySQL')
+        return
+
     connector = mysql.connector.connect(user='root', password='admin', \
                               host = '127.0.0.1', database='movies')
     cursor = connector.cursor(buffered=True)
@@ -415,27 +420,32 @@ def fill_in_mysql_db_from_dataframe(df_movies):
 # -------------------------------- #
 
 
-def test(df_movies):
+def fill_in_mongo_db_from_dataframe(df_movies):
+    ''' 
+        Fill in Mongo database with movies' infos.
 
-    assert True
+        Arg: df_movies: Pandas Dataframe with infos to insert into MongoDB.
+    '''
+
+    if df_movies.empty:
+        print('Dataframe is empty, nothing to insert into MongoDB')
+        return
+
+    assert all(col in ['title', 'original_title', 'plot', 'url_thumbnail'] for col in df_movies.columns)
+
     # Connect to MongoDB
     client = pymongo.MongoClient("mongodb://localhost:27017/")
-
     # Select database "allocine" (or creates if does not exist)
     mydb = client["allocine"]
-
     # Retrieve the collection "movies" (or creates it if does not exist)
     col_movies = mydb["movies"]
     # col_movies.drop()
 
-    # Insertion of movie plots in MongoDB database
-    col_movies.insert_many(df_movies.to_dict(orient='records')) # TO DO ONLY ONCE
-
+    nb_before = col_movies.count_documents({})
     print(f"Insertion of {df_movies.shape[0]} documents in collection 'movies'")
-    print("Nb total documents in base:", col_movies.count_documents({}))
 
-    # Store data in csv file
-    # lst = list(col_movies.find())
-    # df_mongo = pd.DataFrame(lst, columns = ['_id', 'title', 'original_title', 'plot', 'url_thumbnail'])
-    # print(df_mongo.shape[0])
-    # df_mongo.to_csv('csv/mongoDB_1960_to_2025.csv', sep=',', index = False)
+    # Insertion of infos into MongoDB database
+    col_movies.insert_many(df_movies.to_dict(orient='records'))
+
+    assert col_movies.count_documents({}) == nb_before + df_movies.shape[0]
+    print("Nb total documents in movies collection:", col_movies.count_documents({}))

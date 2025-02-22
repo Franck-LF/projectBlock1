@@ -19,9 +19,10 @@ from unidecode import unidecode
 import numpy as np
 import pandas as pd
 
+# API KEY from "https://www.omdbapi.com/"
+api_key = "b8dd5759"
 
-
-
+pd.options.mode.copy_on_write = True
 
 def format_string(st):
     ''' format string 
@@ -76,18 +77,24 @@ def get_plot_and_thumbail_from_omdb(title):
     return plot + "AND" + thumbnail
 
 
-def request_plot_and_thumbnail(df_movies):
+def request_to_OMDB(df_movies):
     ''' request OMDB API and add informations into 'df_movies'
 
         Return: dataframe with new informations (plot and thumbnail_url)
 
         Arg: df_movies Pandas Dataframe containing movie informations.
     '''
-    return df_movies
+    if df_movies.empty:
+        print('Dataframe is empty, nothing to request to OMDB')
+        return None
 
+    assert all(column in df_movies.columns for column in ['title', 'original_title', 'summary', 'url_thumbnail'])
+    # return df_movies
     df_movies['temp']      = df_movies['original_title'].apply(get_plot_and_thumbail_from_omdb)
     df_movies['plot']      = df_movies['temp'].apply(lambda x : x.split('AND')[0])
     df_movies['thumbnail'] = df_movies['temp'].apply(lambda x : x.split('AND')[1])
     df_movies['plot']          = np.where(df_movies['plot'] != '', df_movies['plot'], df_movies['summary'])
     df_movies['url_thumbnail'] = np.where(df_movies['thumbnail'] != '', df_movies['thumbnail'], df_movies['url_thumbnail'])
+
+    print(f"OMDB requestd for {df_movies.shape[0]} movies")
     return df_movies[['title', 'original_title', 'plot', 'url_thumbnail']]

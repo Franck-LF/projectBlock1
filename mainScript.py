@@ -14,16 +14,19 @@
 # import numpy as np
 # import pandas as pd
 from datetime import datetime
-from collections import namedtuple
 
 # Import scrapping functions
 from scrapping import scrap_new_release, Options_Scrapping
 
 # Import request API functions
-from requestOMDB import request_plot_and_thumbnail
+from requestOMDB import request_to_OMDB
 
 # Import databases functions
-from database import fill_in_db_from_dataframe
+from database import fill_in_mysql_db_from_dataframe
+from database import fill_in_mongo_db_from_dataframe
+
+
+
 
 
 if __name__ == '__main__':
@@ -48,34 +51,27 @@ if __name__ == '__main__':
     # -------------- #
     #   Scrapping    #
     # -------------- #    
-    df_movies = scrap_new_release(options_scrapping)
-    assert all(column in df_movies.columns for column in ['title', 'original_title', 'url_thumbnail'])
-
-    # ----------------------------------- #
-    #   Save the dataframe in csv file    #
-    # ----------------------------------- #    
-    df_movies.to_csv(f'csv/movies_{year}_{month}_{day}.csv', sep=',', index = False)
-
-    # ---------------------------------------------------- #
-    #   Insert scrapped informations into MySQL Database   #
-    # ---------------------------------------------------- #
-    fill_in_db_from_dataframe(df_movies)
-
-
+    df_movies = scrap_new_release(options_scrapping, url = 'https://www.allocine.fr/film/agenda/sem-2025-02-12/')
+    
     # -------------------- #
     #   Request API OMDB   #
     # -------------------- #
-    df_movies_wiht_plot_and_thumbnail = request_plot_and_thumbnail(df_movies[['title', 'original_title', 'url_thumbnail']])
+    df_movies_wiht_plot_and_thumbnail = request_to_OMDB(df_movies[['title', 'original_title', 'summary', 'url_thumbnail']])
 
+    # ----------------------------------- #
+    #   Save the dataframe in csv file    #
+    # ----------------------------------- #
+    # df_movies.to_csv(f'csv/movies_mysql_{year}_{month}_{day}.csv', sep=',', index = False)
+    # df_movies_wiht_plot_and_thumbnail.to_csv(f'csv/movies_mongo_{year}_{month}_{day}.csv', sep=',', index = False)
 
-
-    # ---------------------------------------------------------- #
-    #   Insert Requested infos from OMDB into MongoDB Database   #
-    # ---------------------------------------------------------- #
-
-
-
+    # -------------------------------------- #
+    #   Insert movies infos into Databases   #
+    # -------------------------------------- #
+    # MySQL
+    fill_in_mysql_db_from_dataframe(df_movies)
+    # MongoDB
+    fill_in_mongo_db_from_dataframe(df_movies_wiht_plot_and_thumbnail)
 
     now = datetime.now()
-    print(f"Finished at: {now.strftime("%H:%M:%S")}")
+    print(f"\nFinished at: {now.strftime("%H:%M:%S")}")
     print("-------------------- End --------------------")

@@ -468,7 +468,7 @@ def get_ratings(soup_movie, options_scrapping):
                                         False: Beautifulsoup's method. (FASTER)
         '''
 
-    star_rating, nb_notes, nb_reviews = 0, 0, 0
+    star_rating, nb_notes, nb_reviews = '0', '0', '0'
 
     if options_scrapping.use_Selenium:
         elts_ratings = options_scrapping.driver.find_elements(By.CLASS_NAME, 'rating-item')
@@ -652,7 +652,7 @@ def scrap_new_release(options_scrapping, url = ''):
     counter_movies = 0
 
     movies = []
-    for elt_movie in elts_movies[:2]:
+    for elt_movie in elts_movies[:12]:
         status, movie = scrap_movie(elt_movie, options_scrapping)
         counter_movies += 1
         if status == 'OK':
@@ -662,7 +662,7 @@ def scrap_new_release(options_scrapping, url = ''):
     # Display some infos
     print("\n*** Scrapping summary ***")
     print("Nb movies scanned: ", counter_movies)
-    print("Nb movies scrapped:", counter_scraped_movies)
+    print("Nb movies scrapped:", counter_scraped_movies, '\n')
 
     df_movies = pd.DataFrame(movies, columns = ['title', 'original_title', 'date', 'duration', 'categories', \
                                                 'countries', 'star_rating', 'notes', 'reviews', \
