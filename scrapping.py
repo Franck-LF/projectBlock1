@@ -9,12 +9,9 @@
 
 import os
 import re
-import io
 import requests
 import numpy as np
 import pandas as pd
-from datetime import date, datetime
-from unidecode import unidecode
 from collections import namedtuple
 
 from bs4 import BeautifulSoup
@@ -648,6 +645,7 @@ def scrap_new_release(options_scrapping, url = ''):
     if r.status_code != 200:
         print("url_site error")
 
+    print(f"Scrapping movies on {url_new_release}\n")
     soup_new_releases = BeautifulSoup(r.content, 'html.parser')
     elts_movies = soup_new_releases.find_all('li', class_='mdl')
     counter_scraped_movies = 0
@@ -672,6 +670,7 @@ def scrap_new_release(options_scrapping, url = ''):
                                                 'url_thumbnail', 'url_reviews', 'url_similar_movies'])
     return df_movies
 
+# Used to scrap movies released from 1st january to 5th february 2025
 lst_urls = [
             'https://www.allocine.fr/film/agenda/sem-2025-01-01/',
             'https://www.allocine.fr/film/agenda/sem-2025-01-08/',
@@ -686,6 +685,11 @@ def scrap_new_releases_from_urls(lst_urls, options_scrapping):
     '''
     df_movies = pd.DataFrame()
     for url in lst_urls:
-        nb_minimum_critics = -1
         df_movies = pd.concat([df_movies, scrap_new_release(options_scrapping, url=url)])
     return df_movies
+
+
+
+
+if '__name__' == '__main__':
+    pass
