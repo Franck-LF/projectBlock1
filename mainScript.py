@@ -49,12 +49,12 @@ if __name__ == '__main__':
     # -------------- #
     #   Scrapping    #
     # -------------- #    
-    df_movies = scrap_new_release(options_scrapping, url = 'https://www.allocine.fr/film/agenda/sem-2025-02-12/')
+    #df_movies = scrap_new_release(options_scrapping, url = 'https://www.allocine.fr/film/agenda/sem-2025-02-12/')
     
     # -------------------- #
     #   Request API OMDB   #
     # -------------------- #
-    df_movies_wiht_plot_and_thumbnail = request_to_OMDB(df_movies[['title', 'original_title', 'summary', 'url_thumbnail']])
+    #df_movies_wiht_plot_and_thumbnail = request_to_OMDB(df_movies[['title', 'original_title', 'summary', 'url_thumbnail']])
 
     # ----------------------------------- #
     #   Save the dataframe in csv file    #
@@ -66,9 +66,9 @@ if __name__ == '__main__':
     #   Insert movies infos into Databases   #
     # -------------------------------------- #
     # MySQL
-    fill_in_mysql_db_from_dataframe(df_movies)
+    #fill_in_mysql_db_from_dataframe(df_movies)
     # MongoDB
-    fill_in_mongo_db_from_dataframe(df_movies_wiht_plot_and_thumbnail)
+    #fill_in_mongo_db_from_dataframe(df_movies_wiht_plot_and_thumbnail)
 
     now = datetime.now()
     print(f"\nFinished at: {now.strftime("%H:%M:%S")}")
