@@ -74,6 +74,14 @@ def get_movies(request: Request):
     query = "SELECT movie_id, title, release_date FROM movies"
 
     for key, value in request.query_params.items():
+        if any([item in key for item in ['starting', 'name_starting', 'title_starting', 'film_starting']]):
+            query = f"""SELECT movie_id, title, release_date FROM movies \
+                     WHERE title LIKE '{value}%'"""
+        elif any([item in key for item in ['like', 'name_like', 'title_like', 'film_like']]):
+            query = f"""SELECT movie_id, title, release_date FROM movies \
+                     WHERE title LIKE '%{value}%'"""
+
+    for key, value in request.query_params.items():
         if 'actor' in key:
             query += f""" INTERSECT \
                     SELECT m.movie_id AS movie_id, \
