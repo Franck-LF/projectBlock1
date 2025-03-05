@@ -28,3 +28,29 @@ INFOS: info_id, summary, url_thumbnail
 WRITES REVIEW, 1N USERS, 0N REVIEWS
 USERS: user_id, user_name, nb_reviews
 
+
+
+
+NEW VERSION (WITHOUT REVIEWS)
+
+
+
+DIRECTORS: director_id, director_name
+ACTORS: actor_id, actor_name
+COMPOSERS: composer_id, composer_name
+
+DIRECTS MOVIE, 0N MOVIES, 0N DIRECTORS
+CASTS, 0N MOVIES, 0N ACTORS
+COMPOSES MUSIC, 0N MOVIES, 0N COMPOSERS
+
+MOVIES: movie_id, title, duration, release_date, nb_notes, nb_reviews, info_id, star_rating
+
+HAS CATEGORY, 0N MOVIES, 0N CATEGORIES
+NATIONALITY, 0N MOVIES, 0N COUNTRIES
+HAS INFOS, 11 MOVIES, 11 INFOS
+
+CATEGORIES: category_id, category
+COUNTRIES: country_id, country
+INFOS: info_id, summary, url_thumbnail
+
+
