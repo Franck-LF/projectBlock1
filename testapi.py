@@ -59,7 +59,7 @@ def get_movies(request: Request):
         Liste des films
     '''
     print("************ Movies *******************")
-    print(request.query_params.items())
+    # print(request.query_params.items())
     print("***************************************")
 
     query = "SELECT movie_id, title, release_date FROM movies"
@@ -108,6 +108,26 @@ def get_movies(request: Request):
                     JOIN categories AS c ON c.category_id = cm.category_id \
                     WHERE c.category LIKE '%{value}%'
                     """
+    bOrder = False
+    for key, value in request.query_params.items():
+        if 'order' in key:
+            if value in ['name', 'title', 'film']:
+                query += " ORDER BY title"
+                bOrder = True
+            elif value in ['release_date', 'date', 'year']:
+                query += " ORDER BY release_date"
+                bOrder = True
+            elif value in ['rating']:
+                query += " ORDER BY star_rating"
+                bOrder = True
+    
+    if bOrder:
+        for key, value in request.query_params.items():
+            if 'desc' in key:
+                if value in ['true', 'ok']:
+                    query += " DESC"
+    else:
+        query += " ORDER BY title"
 
     cursor.execute(query)
     result = cursor.fetchall()
@@ -125,9 +145,9 @@ def get_movie(request: Request):
         Liste des films
     '''
     print("************* Movie ******************")
-    print(request.path_params)
-    print(request.query_params.items())
-    print(request.query_params.values())
+    # print(request.path_params)
+    # print(request.query_params.items())
+    # print(request.query_params.values())
     print("**************************************")
 
     if 'id' in request.query_params.keys():
@@ -203,7 +223,7 @@ def get_actors(request: Request):
     '''
         Liste des acteurs
     '''
-    query = ("SELECT actor_name FROM actors;")
+    query = ("SELECT actor_name FROM actors ORDER BY actor_name;")
     cursor.execute(query)
     result = cursor.fetchall()
 
@@ -219,7 +239,7 @@ def get_directors(request: Request):
     '''
         Liste des réalisateurs
     '''
-    query = ("SELECT director_name FROM directors;")
+    query = ("SELECT director_name FROM directors ORDER BY director_name;")
     cursor.execute(query)
     result = cursor.fetchall()
 
@@ -235,7 +255,7 @@ def get_composers(request: Request):
     '''
         Liste des compositeurs
     '''
-    query = ("SELECT composer_name FROM composers;")
+    query = ("SELECT composer_name FROM composers ORDER BY composer_name;")
     cursor.execute(query)
     result = cursor.fetchall()
 
@@ -252,7 +272,7 @@ def get_years(request: Request):
     '''
         Liste des années
     '''
-    result = list(range(1960, 2026))
+    result = list(range(2025, 1959))
 
     # for item in result:
     #     item['link'] = f"http://127.0.0.1:8000/movies?year={quote(item['category'])}"
@@ -266,7 +286,7 @@ def get_countries(request: Request):
     '''
         Liste des pays
     '''
-    query = ("SELECT country FROM countries;")
+    query = ("SELECT country FROM countries ORDER BY country;")
     cursor.execute(query)
     result = cursor.fetchall()
 
@@ -282,7 +302,7 @@ def get_categories(request: Request):
     '''
         Liste des catégories
     '''
-    query = ("SELECT category FROM categories;")
+    query = ("SELECT category FROM categories ORDER BY category;")
     cursor.execute(query)
     result = cursor.fetchall()
 
