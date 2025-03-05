@@ -12,6 +12,7 @@ from pydantic import BaseModel
 from urllib.parse import quote
 from dotenv import load_dotenv
 
+
 # Environnement variables
 load_dotenv()
 
@@ -34,6 +35,14 @@ cursor = cnx.cursor(buffered=True, dictionary=True)
 
 
 
+# MYSQL CONNECTOR
+import pymongo
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+mydb = client["allocine"]
+col_movies = mydb["movies"]
+
+
+
 # FAST API
 templates = Jinja2Templates(directory="templates")
 app = FastAPI()
@@ -41,7 +50,7 @@ app = FastAPI()
 
 
 # ------------------------------------
-#     GET
+#     READ
 # ------------------------------------
 
 @app.get("/")
@@ -150,67 +159,74 @@ def get_movie(request: Request):
     # print(request.query_params.values())
     print("**************************************")
 
-    if 'id' in request.query_params.keys():
-        query = (f"""
-                SELECT m.title, m.release_date, i.url_thumbnail
-                FROM movies AS m
-                JOIN infos AS i ON i.info_id = m.info_id
-                WHERE m.movie_id = '{request.query_params['id']}';
-                """)
-        cursor.execute(query)
-        game = cursor.fetchall()
+    assert 'id' in request.query_params.keys()
+    query = (f"""
+            SELECT m.title, m.release_date
+            FROM movies AS m
+            JOIN infos AS i ON i.info_id = m.info_id
+            WHERE m.movie_id = '{request.query_params['id']}';
+            """)
+    cursor.execute(query)
+    game = cursor.fetchall()
 
-        query = (f"""
-                SELECT a.actor_id, a.actor_name
-                FROM actors AS a
-                JOIN actor_movie AS am ON am.actor_id = a.actor_id
-                JOIN movies AS m ON m.movie_id = am.movie_id
-                WHERE m.movie_id = '{request.query_params['id']}';
-                """)
-        cursor.execute(query)
-        actors = cursor.fetchall()
-    
-        for item in actors:
-            item['link'] = f"http://127.0.0.1:8000/movies?actor={quote(item['actor_name'])}"
-    
-        query = (f"""
-                SELECT d.director_id, d.director_name
-                FROM directors AS d
-                JOIN director_movie AS dm ON dm.director_id = d.director_id
-                JOIN movies AS m ON m.movie_id = dm.movie_id
-                WHERE m.movie_id = '{request.query_params['id']}';
-                """)
-        cursor.execute(query)
-        directors = cursor.fetchall()
+    query = (f"""
+            SELECT a.actor_id, a.actor_name
+            FROM actors AS a
+            JOIN actor_movie AS am ON am.actor_id = a.actor_id
+            JOIN movies AS m ON m.movie_id = am.movie_id
+            WHERE m.movie_id = '{request.query_params['id']}';
+            """)
+    cursor.execute(query)
+    actors = cursor.fetchall()
 
-        for item in directors:
-            item['link'] = f"http://127.0.0.1:8000/movies?director={quote(item['director_name'])}"
+    for item in actors:
+        item['link'] = f"http://127.0.0.1:8000/movies?actor={quote(item['actor_name'])}"
 
-        query = (f"""
-                SELECT c.composer_id, c.composer_name
-                FROM composers AS c
-                JOIN composer_movie AS cm ON cm.composer_id = c.composer_id
-                JOIN movies AS m ON m.movie_id = cm.movie_id
-                WHERE m.movie_id = '{request.query_params['id']}';
-                """)
-        cursor.execute(query)
-        composers = cursor.fetchall()
+    query = (f"""
+            SELECT d.director_id, d.director_name
+            FROM directors AS d
+            JOIN director_movie AS dm ON dm.director_id = d.director_id
+            JOIN movies AS m ON m.movie_id = dm.movie_id
+            WHERE m.movie_id = '{request.query_params['id']}';
+            """)
+    cursor.execute(query)
+    directors = cursor.fetchall()
 
-        for item in composers:
-            item['link'] = f"http://127.0.0.1:8000/movies?composer={quote(item['composer_name'])}"
+    for item in directors:
+        item['link'] = f"http://127.0.0.1:8000/movies?director={quote(item['director_name'])}"
 
-        query = (f"""
-                SELECT c.category_id, c.category
-                FROM categories AS c
-                JOIN category_movie AS cm ON cm.category_id = c.category_id
-                JOIN movies AS m ON m.movie_id = cm.movie_id
-                WHERE m.movie_id = '{request.query_params['id']}';
-                """)
-        cursor.execute(query)
-        categories = cursor.fetchall()
+    query = (f"""
+            SELECT c.composer_id, c.composer_name
+            FROM composers AS c
+            JOIN composer_movie AS cm ON cm.composer_id = c.composer_id
+            JOIN movies AS m ON m.movie_id = cm.movie_id
+            WHERE m.movie_id = '{request.query_params['id']}';
+            """)
+    cursor.execute(query)
+    composers = cursor.fetchall()
 
-        for item in categories:
-            item['link'] = f"http://127.0.0.1:8000/movies?category={quote(item['category'])}"
+    for item in composers:
+        item['link'] = f"http://127.0.0.1:8000/movies?composer={quote(item['composer_name'])}"
+
+    query = (f"""
+            SELECT c.category_id, c.category
+            FROM categories AS c
+            JOIN category_movie AS cm ON cm.category_id = c.category_id
+            JOIN movies AS m ON m.movie_id = cm.movie_id
+            WHERE m.movie_id = '{request.query_params['id']}';
+            """)
+    cursor.execute(query)
+    categories = cursor.fetchall()
+
+    for item in categories:
+        item['link'] = f"http://127.0.0.1:8000/movies?category={quote(item['category'])}"
+
+    #
+    # MongoBD Query
+    #
+    mongoDB = col_movies.find_one({ "title": f"{game[0]['title']}" })
+    game[0]['url_thumbnail'] = mongoDB['url_thumbnail']
+    game[0]['plot'] = mongoDB['plot']
 
     return templates.TemplateResponse(
         request = request, name="movie.html", context={"game": game, "actors": actors, 
@@ -314,4 +330,11 @@ def get_categories(request: Request):
     return templates.TemplateResponse(
         request = request, name="categories.html", context={"result": result}
     )
+
+
+# ------------------------------------
+#     Create
+# ------------------------------------
+
+
 
