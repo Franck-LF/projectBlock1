@@ -28,7 +28,6 @@ from selenium.webdriver.common.by import By
 import uuid
 import numpy as np
 import pandas as pd
-# from unidecode import unidecode
 from collections import namedtuple
 
 # MySQL
@@ -1253,9 +1252,9 @@ if __name__ == '__main__':
     #   Insert movies infos into Databases   #
     # -------------------------------------- #
     # MySQL
-    #fill_in_mysql_db_from_dataframe(df_movies)
+    fill_in_mysql_db_from_dataframe(df_movies)
     # MongoDB
-    #fill_in_mongo_db_from_dataframe(df_movies_wiht_plot_and_thumbnail)
+    fill_in_mongo_db_from_dataframe(df_movies_wiht_plot_and_thumbnail)
 
     now = datetime.now()
     print(f"\nFinished at: {now.strftime("%H:%M:%S")}")
