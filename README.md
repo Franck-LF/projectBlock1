@@ -6,3 +6,4 @@ Le fichier script.py automatise les tâches suivantes :
 - Requêtes sur l'API publique OMDB pour collecter des informations supplémentaires,
 - Aggrégation et nettoyage des données
 - Insertion des données dans les bases MySQL et MongoDB
+
