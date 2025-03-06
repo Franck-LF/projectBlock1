@@ -10,6 +10,7 @@ __pycache__/
 # Folder
 chromedriver-win64/
 thumbnails/
+DIV_Files/
 
 # special files
 registre-traitement-simplifie.ods
