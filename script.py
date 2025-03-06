@@ -38,8 +38,13 @@ import pymongo
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
+from dotenv import load_dotenv
+
+# Environnement variables
+load_dotenv()
+
 # API KEY from "https://www.omdbapi.com/"
-api_key = "b8dd5759"
+OMDB_API_KEY = os.getenv("OMDB_API_KEY")
 
 pd.options.mode.copy_on_write = True
 
@@ -736,7 +741,7 @@ def request_omdb_from_title(title):
         Arg:
          - title: string with title of the movie we want the infos about.
     '''
-    url = f"https://www.omdbapi.com/?apikey={api_key}&t={format_string(title)}"
+    url = f"https://www.omdbapi.com/?apikey={OMDB_API_KEY}&t={format_string(title)}"
     r = requests.get(url)
     if r.status_code != 200:
         print(f"ERROR {title}, Response Code: {r.status_code}")

@@ -11,16 +11,20 @@
 
 
 
-# import os
-# import re
+import os
 import json
 import requests
 from unidecode import unidecode
 import numpy as np
 import pandas as pd
 
+from dotenv import load_dotenv
+
+# Environnement variables
+load_dotenv()
+
 # API KEY from "https://www.omdbapi.com/"
-api_key = "b8dd5759"
+OMDB_API_KEY = os.getenv("OMDB_API_KEY")
 
 pd.options.mode.copy_on_write = True
 
