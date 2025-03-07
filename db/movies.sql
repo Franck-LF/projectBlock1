@@ -25,14 +25,14 @@ DROP TABLE IF EXISTS directors,
 
 CREATE TABLE directors (
     director_id		VARCHAR(255)		NOT NULL,
-    director_name	VARCHAR(255),
+    director_name	VARCHAR(255)		NOT NULL,
     PRIMARY KEY (director_id),
     UNIQUE  KEY (director_name)
 );
 
 CREATE TABLE actors (
     actor_id	VARCHAR(255)		NOT NULL,
-    actor_name	VARCHAR(255),
+    actor_name	VARCHAR(255)		NOT NULL,
     PRIMARY KEY (actor_id),
     UNIQUE  KEY (actor_name)
 );
