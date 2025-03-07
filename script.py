@@ -87,6 +87,16 @@ Options_Scrapping = namedtuple('Options', (['use_Selenium', 'driver', 'nb_minimu
 month_FR = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
 month_EN = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
 
+
+
+# -------------------------------------------
+#
+#   Web scraping functions
+#
+# -------------------------------------------
+
+
+
 def number_pages_per_year(soup_year):
     ''' Return the number of pages for one year'''
     pagination = soup_year.find('div', class_='pagination-item-holder')
@@ -718,6 +728,15 @@ def scrap_new_releases_from_urls(lst_urls, options_scrapping):
     return df_movies
 
 
+
+
+# -------------------------------------------
+#
+#   OMDB request functions
+#
+# -------------------------------------------
+
+
 def format_string(st):
     ''' format string 
         from "title of the movie" 
@@ -796,6 +815,17 @@ def request_to_OMDB(df_movies):
 
 months_FR = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
 months_EN = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
+
+
+
+
+
+
+# ---------------------------------------------------- #
+#                                                      #
+#                          DB                          #
+#                                                      #
+# ---------------------------------------------------- #
 
 
 # --------------------------------------------------------- #
