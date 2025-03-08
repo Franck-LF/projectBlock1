@@ -3,7 +3,6 @@ import os
 import jwt
 import pandas as pd
 import datetime
-import asyncio
 from fastapi import FastAPI, Query, Depends, HTTPException, Header, Request
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.templating import Jinja2Templates
@@ -61,8 +60,8 @@ def create_jwt(duration: int) -> str:
     """
     Fonction qui permet de générer un token JWT
     
-    :param duration: Durée de validité du token en secondes
-    :return: Token JWT encodé
+    - **param duration** : Durée de validité du token en secondes
+    - **return** : Token JWT encodé
     """
     expiration = datetime.datetime.now() + datetime.timedelta(seconds=duration)
     return jwt.encode(
@@ -74,10 +73,10 @@ def create_jwt(duration: int) -> str:
 @app.post("/token")
 def generate_token(request: TokenRequest):
     """
-    Route qui permet de générer un token pour un utilisateur qui saisit son mot de passe
+        Route qui permet de générer un token pour un utilisateur qui saisit son mot de passe
     
-    :param request: Objet TokenRequest contenant le mot de passe et la durée
-    :return: Token JWT
+     - **param request** :  Objet TokenRequest contenant le mot de passe et la durée
+     - return : Token JWT
     """
     if request.password != API_PASSWORD:
         raise HTTPException(status_code=401, detail="Invalid password")
@@ -88,9 +87,9 @@ async def verify_token(credentials: HTTPAuthorizationCredentials = Depends(secur
     """
     Fonction qui permet de vérifier le token JWT
 
-    :param credentials: Credentials fournis via le bearer token
-    :return: None
-    :raises: HTTPException si le token est invalide ou expiré
+    - **param credentials** : Credentials fournis via le bearer token
+    - **return** : None
+    - **raises** : HTTPException si le token est invalide ou expiré
     """
     try:
         jwt.decode(credentials.credentials, SECRET_KEY, algorithms=["HS256"])
@@ -124,7 +123,7 @@ async def get_movies( credentials: HTTPAuthorizationCredentials = Depends(securi
                 like: Optional[str] = Query(None, alias="like", description="filtrer les films dont le nom contient 'like'"),
                 actor1: Optional[str] = Query(None, alias="actor1", description="filtrer les films où a joué 'actor1'"),
                 actor2: Optional[str] = Query(None, alias="actor2", description="filtrer les films où a joué 'actor2'"),
-                producer: Optional[str] = Query(None, alias="producer", description="filtrer les films réalisés pas 'producer'"),
+                director: Optional[str] = Query(None, alias="director", description="filtrer les films réalisés par 'director'"),
                 composer: Optional[str] = Query(None, alias="composer", description="filtrer les films dont la musique a été composée par 'composer'"),
                 category: Optional[str] = Query(None, alias="category", description="filtrer les films ayant une catégorie parmi (Action, Science Fiction, Historique, Bollywood, Western, Expérimental, Biopic, Drama, Judiciaire, Romance, Opéra, Drame, Fantastique, Musical, Animation, Aventure, Documentaire, Thriller, Famille, Epouvante-horreur, Guerre, Comédie musicale, Évènement Sportif, Comédie, Péplum, Arts Martiaux, Espionnage, Erotique, Comédie dramatique, Policier)"),
                 year: Optional[int] = Query(None, alias="year", ge=1960, le=2025, description="filtrer les films en fonction de l'année de sortie"),
@@ -138,7 +137,7 @@ async def get_movies( credentials: HTTPAuthorizationCredentials = Depends(securi
      - **like**: filtrer les films dont le nom contient 'like'
      - **actor1**: permet de filtrer parmi les films où a joué "actor1" ,
      - **actor2**: permet de filtrer parmi les films où a joué "actor2",
-     - **producer**: filtrer les films réalisés pas 'producer',
+     - **director**: filtrer les films réalisés par 'director',
      - **composer**: filtrer les films dont la musique a été composée par 'composer',
      - **category**: filtrer les films ayant une catégorie spécifique,
      - **year**: filtrer les films en fonction de leur année de sortie,
@@ -172,7 +171,7 @@ async def get_movies( credentials: HTTPAuthorizationCredentials = Depends(securi
                         WHERE a.actor_name LIKE '%{item}%'
                         """
 
-    if producer:
+    if director:
         query += f""" INTERSECT \
                     SELECT m.movie_id AS movie_id, \
                            m.title AS 'title', \
