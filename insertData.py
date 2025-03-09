@@ -456,7 +456,7 @@ if __name__ == '__main__':
     day, month, year, hour, min, sec = now.strftime("%d-%m-%Y-%H-%M-%S").split('-')
     print(f"Date: {year}/{month}/{day}")
     print(f"Start at: {hour}:{min}:{sec}\n")
-    day = '19'
+    day = '26'
     month = '02'
 
     # Read CSV files

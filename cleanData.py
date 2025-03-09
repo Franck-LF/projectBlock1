@@ -134,8 +134,8 @@ if __name__ == '__main__':
     day, month, year, hour, min, sec = now.strftime("%d-%m-%Y-%H-%M-%S").split('-')
     # print(f"Date: {year}/{month}/{day}")
     print(f"Start at: {hour}:{min}:{sec}\n")
-    # day = '19'
-    # month = '02'
+    day = '26'
+    month = '02'
 
     # Read CSV files
     df_movies = pd.read_csv(f'csv/movies_week_{year}_{month}_{day}.csv', delimiter = ',')
@@ -147,7 +147,6 @@ if __name__ == '__main__':
 
     # Clean data
     df_movies = format_data(df_movies)
-    print(df_movies.loc[0, 'categories'], type(df_movies.loc[0, 'categories']))
 
     # ----------------------------------- #
     #   Save the dataframe in csv file    #
