@@ -14,6 +14,12 @@ DIV_Files/
 
 # special files
 registre-traitement-simplifie.ods
+database.py
+mainScript.py
+Grille individuelle d'évaluation.pdf
+requestOMDB.py
+scrapping.py
+script.py
 
 # C extensions
 *.so
