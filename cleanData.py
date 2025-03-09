@@ -128,14 +128,14 @@ def format_data(df):
 
 if __name__ == '__main__':
 
-    print("--------------- Start scrapping new release ---------------")
+    print("--------------- Start aggregating and cleaning Data ---------------")
 
     now = datetime.now()
     day, month, year, hour, min, sec = now.strftime("%d-%m-%Y-%H-%M-%S").split('-')
-    print(f"Date: {year}/{month}/{day}")
+    # print(f"Date: {year}/{month}/{day}")
     print(f"Start at: {hour}:{min}:{sec}\n")
-    day = '19'
-    month = '02'
+    # day = '19'
+    # month = '02'
 
     # Read CSV files
     df_movies = pd.read_csv(f'csv/movies_week_{year}_{month}_{day}.csv', delimiter = ',')
@@ -156,5 +156,4 @@ if __name__ == '__main__':
     df_movies_omdb.to_csv(f'csv/mongoDB_week_{year}_{month}_{day}.csv', sep=',', index = False)
 
     now = datetime.now()
-    print(f"\nFinished at: {now.strftime("%H:%M:%S")}")
-    print("-------------------- End --------------------")
+    print(f"\nFinished aggregating and cleaning Data at: {now.strftime("%H:%M:%S")}")

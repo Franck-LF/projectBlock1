@@ -450,7 +450,7 @@ def fill_in_mongo_db_from_dataframe(df_movies):
 
 if __name__ == '__main__':
 
-    print("--------------- Start inserting in DB ---------------")
+    print("--------------- Start insering Data in DB ---------------")
 
     now = datetime.now()
     day, month, year, hour, min, sec = now.strftime("%d-%m-%Y-%H-%M-%S").split('-')
@@ -467,10 +467,10 @@ if __name__ == '__main__':
     #   Insert movies infos into Databases   #
     # -------------------------------------- #
     # MySQL
-    # fill_in_mysql_db_from_dataframe(df_movies)
+    fill_in_mysql_db_from_dataframe(df_movies)
     # MongoDB
     fill_in_mongo_db_from_dataframe(df_movies_omdb)
 
     now = datetime.now()
-    print(f"\nFinished at: {now.strftime("%H:%M:%S")}")
+    print(f"\nFinished insering Data at: {now.strftime("%H:%M:%S")}")
     print("-------------------- End --------------------")

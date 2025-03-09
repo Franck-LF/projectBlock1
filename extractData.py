@@ -808,14 +808,12 @@ def request_to_OMDB(df_movies):
 
 if __name__ == '__main__':
 
-    print("--------------- Start scrapping new release ---------------")
+    print("***********************************************************")
 
     now = datetime.now()
     day, month, year, hour, min, sec = now.strftime("%d-%m-%Y-%H-%M-%S").split('-')
     print(f"Date: {year}/{month}/{day}")
     print(f"Start at: {hour}:{min}:{sec}\n")
-    day = '19'
-    month = '02'
 
     use_Selenium = False
     driver = None
@@ -827,12 +825,13 @@ if __name__ == '__main__':
                                     nb_consecutives_unpopular_movies_to_break,
                                     nb_maximum_movies_per_year)
 
+    print("--------------- scrapping new release ---------------")
     # -------------- #
     #   Scrapping    #
     # -------------- #
-    df_movies = scrap_new_release(options_scrapping, url = 'https://www.allocine.fr/film/agenda/sem-2025-02-19/')
+    df_movies = scrap_new_release(options_scrapping, url = 'https://www.allocine.fr/film/agenda/sem-2025-02-26/')
     
-    # -------------------- #
+    print("--------------- Requesting OMDB ---------------")
     #   Request API OMDB   #
     # -------------------- #
     df_temp = df_movies.copy()
@@ -845,5 +844,4 @@ if __name__ == '__main__':
     df_movies_wiht_plot_and_thumbnail.to_csv(f'csv/mongoDB_week_{year}_{month}_{day}.csv', sep=',', index = False)
 
     now = datetime.now()
-    print(f"\nFinished at: {now.strftime("%H:%M:%S")}")
-    print("-------------------- End --------------------")
+    print(f"\nFinished Scrapping and Requesting OMDB at: {now.strftime("%H:%M:%S")}")
