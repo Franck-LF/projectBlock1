@@ -9,3 +9,26 @@ Le fichier script.py automatise les tâches suivantes :
 - Aggrégation et nettoyage des données
 - Insertion des données dans les bases MySQL et MongoDB
 
+
+
+
+---
+
+Script d'extraction des données
+
+---
+
+
+Script d'agrégation et nettoyage des données
+
+---
+
+
+Script de mise en base des données
+
+
+---
+
+
+
+
