@@ -20,6 +20,7 @@ Grille individuelle d'évaluation.pdf
 requestOMDB.py
 scrapping.py
 script.py
+Block.pdf
 
 # C extensions
 *.so
