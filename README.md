@@ -15,7 +15,7 @@ L'API offre la possibilité de combiner ces filtres avec des filtres classiques 
 
 ## **Modules python à installer**
 
-Le fichier requirements.txt contient la liste des modules python nécessaires à l'exécution des scripts décrits ci-dessous?
+Le fichier **requirements.txt** contient la liste des modules python nécessaires à l'exécution des scripts.
 
 ---
 
@@ -48,6 +48,8 @@ Fichier insertData.py<br>
 
 - Ajout des données dans la base MySQL,
 - Ajout des données dans la base MongoDB.
+
+**Attention** il faut au préalable avoir construit la base de données MySQL, cela peut se faire à l'aide du fichier **movies.sql** et la commande : <code>C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" < movies.sql -u root -p</code>
 
 ---
 
