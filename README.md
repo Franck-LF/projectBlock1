@@ -27,8 +27,8 @@ Le fichier **requirements.txt** contient la liste des modules python nécessaire
 Fichier extractData.py<br>
 <code>python ./extractData.py</code>
 
-- web scraping des données,
-- requêtage de l'API OMDB pour collecter des informations (synopsis et affiche d'un film),
+- web scraping des informations concernant les films sortis le mercredi de la semaine courante,
+- requêtage de l'API OMDB pour collecter des informations supplémentaires (synopsis et affiche d'un film),
 - écritude des données dans des fichiers csv.
 
 ---
@@ -49,8 +49,8 @@ Fichier cleanData.py<br>
 Fichier insertData.py<br>
 <code>python ./insertData.py</code>
 
-- Ajout des données dans la base MySQL,
-- Ajout des données dans la base MongoDB.
+- Ajout dans la base MySQL des données structurées (films, acteurs, réalisateurs, compositeurs, catégories),
+- Ajout dans la base MongoDB des données non-structurées (synopsis et url de l'affiche du film).
 
 **Attention**<br>
 Il faut déjà avoir construit la base de données MySQL, cela peut se faire à l'aide du fichier **movies.sql** et la commande : <code>C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" < movies.sql -u root -p</code>
@@ -63,7 +63,8 @@ Fichier api.py<br>
 <code>uvicorn api:app –reload</code>
 
 - Simule un serveur local pour lancer l'API,
-- l'API expose la base de données.
+- L'API expose la base de données,
+- La documentation (http://127.0.0.1:8000/docs) explique comment formuler des requêtes.
 
 ---
 
