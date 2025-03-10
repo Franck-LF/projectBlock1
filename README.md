@@ -6,8 +6,8 @@ Après agrégation et nettoyage des données, les données sont stockées dans u
 
 Réalisation d'une API pour exposer la base de données ainsi et offrir des outils de requêtes du type :
 - Afficher la liste de films dans lesquels 2 acteurs ont joué,
-- Afficher la liste de films réalisés par X dans lesquels l'acteur Y a joué,<br>
-- Afficher la liste de films dans lesquels a joué l'acteur X et dont la musique a été composée par Y.<br>
+- Afficher la liste de films réalisés par X dans lesquels l'acteur Y a joué,
+- Afficher la liste de films dans lesquels a joué l'acteur X et dont la musique a été composée par Y,
 - Filtrer par catégorie de films, année de production.
 
 L'API offre la possibilité de combiner tous ces filtres.
@@ -60,7 +60,7 @@ Il faut déjà avoir construit la base de données MySQL, cela peut se faire à 
 ## **Script de l'API**
 
 Fichier api.py<br>
-<code>uvicorn api:app –reload</code>
+<code>uvicorn api:app --reload</code>
 
 - Simule un serveur local pour lancer l'API,
 - L'API expose la base de données,
