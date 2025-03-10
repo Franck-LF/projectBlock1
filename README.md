@@ -1,12 +1,12 @@
 # **Projet Allocine**
 
-Projet de webscrapping des informations de films à partir du site allocine.fr, seront ajoutées les informations (synopsis et affiche de films) obtenues par requêtage de l'API publique OMDB.
-Après agrégation et nettoyage des données, les données sont stockées dans une base **MySQL** pour les données structurées (liste d'acteurs, réalisateurs, compositeurs, catégories, pays du film) et dans une base **MongoDB** pour les données non-structurées (textuelles comme le synopsis et les affiches de films).
+Projet de webscrapping des informations de films à partir du site allocine.fr, seront ajoutées les informations (synopsis et affiche de films) obtenues par requêtage de l'API publique OMDB.<br>
+Après agrégation et nettoyage des données, les données sont stockées dans une base **MySQL** pour les données structurées (liste d'acteurs, réalisateurs, compositeurs, catégories, pays du film) et dans une base **MongoDB** pour les données non-structurées (textuelles comme le synopsis et les affiches de films).<br>
 Réalisation d'une API pour exposer la base de données ainsi construite, la documentation OpenAPI permet de faire des requêtes du type :
 - Afficher la liste de films dans lesquels 2 acteurs ont joué,
-- Afficher la liste de films réalisé par X dans lequel l'acteur Y à joué,
-Des filtres identiques avec les compositeurs de musique de films, catégories de films, année de production, tous ces filtres pouvant être combinés ensemble.
-
+- Afficher la liste de films réalisé par X dans lequel l'acteur Y à joué,<br>
+- Afficher la liste de films dans lesquels ont joué l'acteur X et dont la musique a été composée par Y,<br>
+l'API offre la possibilité de combiner ces filtres avec des filtres classiques (filtre de catégorie de films, année de production)
 
 <img src="https://github.com/Franck-LF/projectBlock1/blob/main/images/diag.png" alt="Drawing" style="width: 500px;"/>
 
@@ -14,7 +14,7 @@ Des filtres identiques avec les compositeurs de musique de films, catégories de
 
 ## **Script d'extraction des données**
 
-extractData.py
+Fichier extractData.py<br>
 <code>python ./extractData.py</code>
 
 - web scraping des données,
@@ -25,7 +25,7 @@ extractData.py
 
 ## **Script d'agrégation et nettoyage des données**
 
-cleanData.py
+Fichier cleanData.py<br>
 <code>python ./cleanData.py</code>
 
 - Ajout des données de requêtage d'OMDB aux données,
@@ -36,7 +36,7 @@ cleanData.py
 
 ## **Script de mise en base des données**
 
-insertData.py
+Fichier insertData.py<br>
 <code>python ./insertData.py</code>
 
 - Ajout des données dans la base MySQL,
@@ -46,7 +46,7 @@ insertData.py
 
 ## **Script de l'API**
 
-api.py
+Fichier api.py<br>
 <code>uvicorn api:app –reload</code>
 
 - Simule un serveur local pour lancer l'API,
