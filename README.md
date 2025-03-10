@@ -7,9 +7,9 @@ Réalisation d'une API pour exposer la base de données ainsi construite, la doc
 - Afficher la liste de films réalisé par X dans lequel l'acteur Y à joué,
 Des filtres identiques avec les compositeurs de musique de films, catégories de films, année de production, tous ces filtres pouvant être combinés ensemble.
 
-<div>
-<img src="attachment:https://github.com/Franck-LF/projectBlock1/blob/main/images/diag.png" width="400"/>
-</div>
+![diag](https://github.com/Franck-LF/projectBlock1/blob/main/images/diag.png)
+
+<img src="![image.JPG](https://github.com/Franck-LF/projectBlock1/blob/main/images/diag.png)" alt="Drawing" style="width: 200px;"/>
 
 ---
 
