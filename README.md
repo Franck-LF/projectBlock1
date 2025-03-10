@@ -5,8 +5,9 @@ Après agrégation et nettoyage des données, les données sont stockées dans u
 Réalisation d'une API pour exposer la base de données ainsi construite, la documentation OpenAPI permet de faire des requêtes du type :
 - Afficher la liste de films dans lesquels 2 acteurs ont joué,
 - Afficher la liste de films réalisé par X dans lequel l'acteur Y à joué,<br>
-- Afficher la liste de films dans lesquels ont joué l'acteur X et dont la musique a été composée par Y,<br>
-l'API offre la possibilité de combiner ces filtres avec des filtres classiques (filtre de catégorie de films, année de production)
+- Afficher la liste de films dans lesquels ont joué l'acteur X et dont la musique a été composée par Y.<br>
+
+L'API offre la possibilité de combiner ces filtres avec des filtres classiques (filtre de catégorie de films, année de production).
 
 <img src="https://github.com/Franck-LF/projectBlock1/blob/main/images/diag.png" alt="Drawing" style="width: 500px;"/>
 
