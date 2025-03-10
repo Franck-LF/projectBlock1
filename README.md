@@ -49,7 +49,8 @@ Fichier insertData.py<br>
 - Ajout des données dans la base MySQL,
 - Ajout des données dans la base MongoDB.
 
-**Attention** il faut au préalable avoir construit la base de données MySQL, cela peut se faire à l'aide du fichier **movies.sql** et la commande : <code>C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" < movies.sql -u root -p</code>
+**Attention**<br>
+Il faut déjà avoir construit la base de données MySQL, cela peut se faire à l'aide du fichier **movies.sql** et la commande : <code>C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" < movies.sql -u root -p</code>
 
 ---
 
