@@ -7,7 +7,7 @@ Réalisation d'une API pour exposer la base de données ainsi construite, la doc
 - Afficher la liste de films réalisé par X dans lequel l'acteur Y à joué,
 Des filtres identiques avec les compositeurs de musique de films, catégories de films, année de production, tous ces filtres pouvant être combinés ensemble.
 
-
+FIGURE
 
 ---
 
@@ -38,8 +38,8 @@ cleanData.py
 insertData.py
 <code>python ./insertData.py</code>
 
-- Ajout des données de requêtage d'OMDB aux données
-- Formatage et normalisation des données
+- Ajout des données dans la base MySQL
+- Ajout des données dans la base MongoDB
 
 
 ---
