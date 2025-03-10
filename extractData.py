@@ -776,8 +776,6 @@ def get_plot_and_thumbail_from_omdb(title):
             plot = res_dict['Plot']
         if res_dict['Poster'] != '' and res_dict['Poster'] != 'N/A':
             thumbnail = res_dict['Poster']
-    print("plot:", plot)
-    print("thumbnail:", thumbnail)
     return plot + "AND" + thumbnail
 
 
@@ -829,7 +827,8 @@ if __name__ == '__main__':
     # -------------- #
     #   Scrapping    #
     # -------------- #
-    df_movies = scrap_new_release(options_scrapping, url = 'https://www.allocine.fr/film/agenda/sem-2025-02-26/')
+    # df_movies = scrap_new_release(options_scrapping, url = 'https://www.allocine.fr/film/agenda/sem-2025-02-26/')
+    df_movies = scrap_new_release(options_scrapping)
     
     print("--------------- Requesting OMDB ---------------")
     #   Request API OMDB   #
