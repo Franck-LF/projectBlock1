@@ -29,9 +29,9 @@ Fichier extractData.py<br>
 Fichier cleanData.py<br>
 <code>python ./cleanData.py</code>
 
-- Ajout des données de requêtage d'OMDB aux données,
+- Ajout des données de requêtage d'OMDB aux données déjà collectées sur Allociné,
 - Formatage et normalisation des données,
-- écritude des données dans des fichiers csv.
+- écriture des données dans des fichiers csv.
 
 ---
 
