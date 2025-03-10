@@ -8,7 +8,7 @@ Réalisation d'une API pour exposer la base de données ainsi construite, la doc
 Des filtres identiques avec les compositeurs de musique de films, catégories de films, année de production, tous ces filtres pouvant être combinés ensemble.
 
 
-<img src="https://github.com/Franck-LF/projectBlock1/blob/main/images/diag.png" alt="Drawing" style="width: 200px;"/>
+<img src="https://github.com/Franck-LF/projectBlock1/blob/main/images/diag.png" alt="Drawing" style="width: 500px;"/>
 
 ---
 
