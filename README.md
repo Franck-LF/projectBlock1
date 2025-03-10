@@ -1,6 +1,7 @@
 # **Projet Allocine**
 
-Projet de webscrapping des informations de films à partir du site allocine.fr, seront ajoutées les informations (synopsis et affiche de films) obtenues par requêtage de l'API publique OMDB.<br>
+Web scraping d'informations de films à partir du site allocine.fr, nous y ajouterons les informations (synopsis et affiche de films) obtenues par requêtage de l'API publique OMDB.<br>
+
 Après agrégation et nettoyage des données, les données sont stockées dans une base **MySQL** pour les données structurées (liste d'acteurs, réalisateurs, compositeurs, catégories, pays du film) et dans une base **MongoDB** pour les données non-structurées (textuelles comme le synopsis et les affiches de films).<br>
 Réalisation d'une API pour exposer la base de données ainsi construite, la documentation OpenAPI permet de faire des requêtes du type :
 - Afficher la liste de films dans lesquels 2 acteurs ont joué,
