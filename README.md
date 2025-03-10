@@ -13,6 +13,12 @@ L'API offre la possibilité de combiner ces filtres avec des filtres classiques 
 
 ---
 
+## **Modules python à installer**
+
+Le fichier requirements.txt contient la liste des modules python nécessaires à l'exécution des scripts décrits ci-dessous?
+
+---
+
 ## **Script d'extraction des données**
 
 Fichier extractData.py<br>
