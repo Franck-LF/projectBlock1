@@ -4,10 +4,11 @@ Projet de webscrapping des informations de films à partir du site allocine.fr, 
 Après agrégation et nettoyage des données, les données sont stockées dans une base **MySQL** pour les données structurées (liste d'acteurs, réalisateurs, compositeurs, catégories, pays du film) et dans une base **MongoDB** pour les données non-structurées (textuelles comme le synopsis et les affiches de films).<br>
 Réalisation d'une API pour exposer la base de données ainsi construite, la documentation OpenAPI permet de faire des requêtes du type :
 - Afficher la liste de films dans lesquels 2 acteurs ont joué,
-- Afficher la liste de films réalisé par X dans lequel l'acteur Y à joué,<br>
-- Afficher la liste de films dans lesquels ont joué l'acteur X et dont la musique a été composée par Y.<br>
+- Afficher la liste de films réalisés par X dans lesquels l'acteur Y à joué,<br>
+- Afficher la liste de films dans lesquels a joué l'acteur X et dont la musique a été composée par Y.<br>
+- Filter par catégorie de films, année de production.
 
-L'API offre la possibilité de combiner ces filtres avec des filtres classiques (filtre de catégorie de films, année de production).
+L'API offre la possibilité de combiner tous ces filtres.
 
 <img src="https://github.com/Franck-LF/projectBlock1/blob/main/images/diag.png" alt="Drawing" style="width: 500px;"/>
 
